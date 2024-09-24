@@ -23,6 +23,7 @@ public class NumberGuessingGame {
         //Kullanicinin sayiyi dogru tahmin edip etmedigini kontrol etmek icin bir
         //boolean degisken olusturalim
         boolean tahminDogrumu = false;
+        int toplamHak = 10;// Toplam deneme hakkı
 
         System.out.println("0-100 arasinda br sayiyi tahmin etmeye calisin");
 
@@ -34,6 +35,9 @@ public class NumberGuessingGame {
 
             //Sayaci bir artiralim
             denemeSayisi++;
+            int kalanHak = toplamHak - denemeSayisi; // Kalan hak sayısını hesapla
+
+            System.out.println("Kalan hak sayisi: " + kalanHak);
 
             //Tahmini kontrol edelim
             if (tahminEdilen < rastgeleSayi) {
@@ -46,9 +50,13 @@ public class NumberGuessingGame {
                 System.out.println("Deneme sayisi : " + denemeSayisi);
             }
 
-
+            if (kalanHak == 0 && !tahminDogrumu) {
+                System.out.println("Hakkiniz kalmadi. Dogru sayi: " + rastgeleSayi);
+                break;
+            }
         } while (!tahminDogrumu); //Dongu dogru tahmin yapincaya kadar devam edecek
-        scanner.close(); //Random'da kapatiliyor mu?
+        scanner.close(); //Scanner kapatildi
 
     }
+
 }
